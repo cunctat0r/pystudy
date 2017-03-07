@@ -65,5 +65,9 @@ class KnownValues(unittest.TestCase):
 			result = roman1.to_roman(integer)
 			self.assertEqual(numeral, result)
 
+	def test_too_large(self):
+		''' to_roman should fail with large input '''
+		self.assertRaises(roman1.OutOfRangeError, roman1.to_roman, 4000)
+
 if __name__ == '__main__':
 	unittest.main()

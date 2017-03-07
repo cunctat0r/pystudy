@@ -12,12 +12,18 @@ roman_numeral_map = (('M',  1000),
                      ('IV', 4),
                      ('I',  1))
 
+class OutOfRangeError(ValueError):
+	pass
+
 def to_roman(num):
 	''' Convert integer to Roman numeral '''
+
+	if num > 3999:
+		raise OutOfRangeError
+
 	result = ''
 	for numeral, integer in roman_numeral_map:
 		while num >= integer:
 			result += numeral
 			num -= integer
 	return result
-	
