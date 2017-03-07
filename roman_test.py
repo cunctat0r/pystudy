@@ -81,5 +81,18 @@ class KnownValues(unittest.TestCase):
 		''' to_roman should fail with non-integer input '''
 		self.assertRaises(roman1.NotIntegerError, roman1.to_roman, 0.5)
 
+	def test_from_roman_known_values(self):
+		'''from_roman should give known result with known input'''
+		for integer, numeral in self.known_values:
+			result = roman1.from_roman(numeral)
+			self.assertEqual(integer, result)
+
+	def test_roundtrip(self):
+		''' from_roman(to_roman(n)) == n for n = (1...3999) '''
+		for num in range(1,4000):
+			numeral = roman1.to_roman(num)
+			result = roman1.from_roman(numeral)
+			self.assertEqual(result, num)
+
 if __name__ == '__main__':
 	unittest.main()
