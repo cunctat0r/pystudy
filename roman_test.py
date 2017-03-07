@@ -60,7 +60,8 @@ class KnownValues(unittest.TestCase):
                      (3999, 'MMMCMXCIX'))
 	
 	def test_to_roman_known_values(self):
-		for integer, numeral in known_values:
+		'''to_roman should give known result with known input'''
+		for integer, numeral in self.known_values:
 			result = roman1.to_roman(integer)
 			self.assertEqual(numeral, result)
 
