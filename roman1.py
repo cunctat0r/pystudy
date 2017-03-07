@@ -18,7 +18,7 @@ class OutOfRangeError(ValueError):
 def to_roman(num):
 	''' Convert integer to Roman numeral '''
 
-	if num > 3999:
+	if num > 3999 or num <= 0:
 		raise OutOfRangeError
 
 	result = ''
